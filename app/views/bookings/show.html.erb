@@ -10,12 +10,12 @@
 
 <p>
   <strong>Start:</strong>
-  <%= @booking.start_time %>
+  <%=readable_time(@booking.start_time) %>
 </p>
 
 <p>
   <strong>End:</strong>
-  <%= @booking.end_time %>
+  <%=readable_time( @booking.end_time) %>
 </p>
 
 <%= link_to 'Edit', edit_user_booking_path(@booking.user_id,@booking.id) %> |
