@@ -22,8 +22,11 @@
                 <li class="items"><%= link_to "Manage Rooms", rooms_path %></li>
 
               <% end %>
-              <li class="items"><%= link_to "New Booking", new_user_booking_path(current_user.id) %></li>
+              <% if is_admin? %>
+              <% else %>
+              <li class="items"><%= link_to "New Meeting", new_user_booking_path(current_user.id) %></li>
               <li class="items"><%= link_to "Dashboard", user_bookings_path(current_user.id) %></li>
+              <% end %>
               <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn" data-toggle="dropdown">
                   Account </a>
