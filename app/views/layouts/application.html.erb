@@ -25,6 +25,7 @@
               <% if is_admin? %>
               <% else %>
               <li class="items"><%= link_to "New Meeting", new_user_booking_path(current_user.id) %></li>
+                <li class="items"><%= link_to "Invite", new_user_invite_path(current_user.id) %></li>
               <li class="items"><%= link_to "Dashboard", user_bookings_path(current_user.id) %></li>
               <% end %>
               <li class="dropdown">

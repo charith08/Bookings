@@ -4,7 +4,8 @@ class CreateRooms < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :location
       t.string :status
-
+      t.integer :capacity
+      
       t.timestamps
     end
   end

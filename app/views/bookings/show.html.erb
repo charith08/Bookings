@@ -18,5 +18,10 @@
   <%=readable_time( @booking.end_time) %>
 </p>
 
+<p> Send invite link to <p>
+
+  
+
+
 <%= link_to 'Edit', edit_user_booking_path(@booking.user_id,@booking.id) %> |
 <%= link_to 'Back', user_bookings_path(@booking.user_id)%>
