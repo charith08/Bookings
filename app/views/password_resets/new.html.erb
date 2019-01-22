@@ -1,0 +1,17 @@
+<% provide(:title, "Forgot password") %>
+<%= stylesheet_link_tag "/custom.css" %>
+<h1>Forgot password</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+
+    <div class="field">
+      <%= f.label :email, class: "inputfield" %>
+      <%= f.text_field :email, class: 'form-control inputfield' %>
+    </div>
+
+      <%= f.submit "Submit", class: "button" %>
+    <% end %>
+  </div>
+</div>

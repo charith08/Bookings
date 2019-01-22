@@ -1,0 +1,7 @@
+<h1>Editing Booking</h1>
+<% provide(:title, "Edit Booking") %>
+
+<%= render 'form', booking: @booking %>
+
+<%= link_to 'Show',user_booking_path(@booking.user_id,@booking.id) %> |
+<%= link_to 'Back', user_bookings_path %>

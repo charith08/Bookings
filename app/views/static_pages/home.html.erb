@@ -1,0 +1,9 @@
+<% provide(:title, "Home") %>
+<h1>Ruby App</h1>
+<h1> Home page </h1>
+
+<% if logged_in? %>
+
+<% else %>
+<%= link_to "Sign up now!", signup_path, class: "button" %>
+<% end %>
