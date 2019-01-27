@@ -1,0 +1,12 @@
+<div  class="col-md-5 card">
+  <br>
+
+<h3><%= user.name %></h3>
+<h2><%= user.email %></h2>
+
+
+
+<%= link_to "Add User", addparticipant_path(:booking_id => params[:booking_id], :user_id => user.id, :room_id => params[:room_id]), method: :post, class:"btn btn-success btn-md" %>
+<br>
+<br>
+</div>

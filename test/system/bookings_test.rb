@@ -14,9 +14,8 @@ class BookingsTest < ApplicationSystemTestCase
     visit bookings_url
     click_on "New Booking"
 
-    fill_in "End", with: @booking.end
-    fill_in "Start", with: @booking.start
-    fill_in "Status", with: @booking.status
+    fill_in "End time", with: @booking.end_time
+    fill_in "Start time", with: @booking.start_time
     click_on "Create Booking"
 
     assert_text "Booking was successfully created"
@@ -27,9 +26,8 @@ class BookingsTest < ApplicationSystemTestCase
     visit bookings_url
     click_on "Edit", match: :first
 
-    fill_in "End", with: @booking.end
-    fill_in "Start", with: @booking.start
-    fill_in "Status", with: @booking.status
+    fill_in "End time", with: @booking.end_time
+    fill_in "Start time", with: @booking.start_time
     click_on "Update Booking"
 
     assert_text "Booking was successfully updated"

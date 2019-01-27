@@ -1,0 +1,3 @@
+<p id="notice"><%= notice %></p>
+
+<%= render Participant.where(booking_id: params[:booking_id])  %>

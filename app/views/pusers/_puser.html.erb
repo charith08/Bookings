@@ -1,0 +1,23 @@
+<%booking=Booking.find(puser.booking_id)%>
+
+<div >
+<br>
+<p>
+  <strong>Meeting name:</strong>
+  <%= booking.name %>
+  </p>
+    <p>
+  <strong> booking Start: </strong>
+  <%= readable_time(booking.start_time) %>
+  </p>
+
+  <p>
+    <strong> booking Stop: </strong>
+    <%= readable_time(booking.end_time) %>
+    </p>
+
+    <%= link_to "Accept", response_yes_path(:booking_id => booking.id, :user_id => @user.id),  remote: true, class:""%>
+    <%= link_to "Decline", response_no_path(:booking_id => booking.id, :user_id => @user.id),  remote: true, class:""%>
+
+
+</div>

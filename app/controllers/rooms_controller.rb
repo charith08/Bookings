@@ -10,6 +10,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    @rooms = Room.all
   end
 
   # GET /rooms/new
@@ -26,6 +27,7 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
 
+    if current_user.admin?
     respond_to do |format|
       if @room.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
@@ -34,7 +36,8 @@ class RoomsController < ApplicationController
         format.html { render :new }
         format.json { render json: @room.errors, status: :unprocessable_entity }
       end
-    end
+     end
+   end
   end
 
   # PATCH/PUT /rooms/1
@@ -69,6 +72,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:name, :location, :status, :capacity)
+      params.require(:room).permit(:name, :capacity)
     end
 end

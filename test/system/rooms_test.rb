@@ -14,9 +14,8 @@ class RoomsTest < ApplicationSystemTestCase
     visit rooms_url
     click_on "New Room"
 
-    fill_in "Location", with: @room.location
+    fill_in "Capacity", with: @room.capacity
     fill_in "Name", with: @room.name
-    fill_in "Status", with: @room.status
     click_on "Create Room"
 
     assert_text "Room was successfully created"
@@ -27,9 +26,8 @@ class RoomsTest < ApplicationSystemTestCase
     visit rooms_url
     click_on "Edit", match: :first
 
-    fill_in "Location", with: @room.location
+    fill_in "Capacity", with: @room.capacity
     fill_in "Name", with: @room.name
-    fill_in "Status", with: @room.status
     click_on "Update Room"
 
     assert_text "Room was successfully updated"

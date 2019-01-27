@@ -1,18 +1,35 @@
 Rails.application.routes.draw do
 
 
-  resources :invites
+  resources :pusers
+  resources :participants
   resources :bookings
   resources :rooms
-  resources :users
 
-  resources :users do
-    resources :bookings
-    resources :invites
+  resources :rooms do
+        resources :bookings do
+          resources :participants
+        end
   end
 
+
+  resources :users do
+        resources :bookings
+  end
+
+  resources :users do
+    resources :pusers
+    end
+
+  get '/adduser', to: 'participants#new'
+  get '/show_booking_users', to: 'participants#show'
+  get '/show_user_bookings', to: 'pusers#show'
+  get '/addparticipant', to: 'participants#new'
+  post '/addparticipant', to: 'participants#create'
   get 'password_resets/new'
   get 'password_resets/edit'
+  get '/response_yes', to: 'pusers#yes'
+  get '/response_no', to: 'pusers#no'
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
@@ -21,8 +38,9 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  #get '/activate',   to: 'account_activations#activate'
 
+  #get '/activate',   to: 'account_activations#activate'
+  resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 

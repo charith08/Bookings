@@ -10,36 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_114426) do
+ActiveRecord::Schema.define(version: 2019_01_27_174303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
+    t.string "name"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "room_id"
+    t.integer "participantCount", default: 0
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "status", default: "No Response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "booking_id"
   end
 
-  create_table "invites", force: :cascade do |t|
-    t.string "email"
+  create_table "pusers", force: :cascade do |t|
     t.integer "booking_id"
-    t.integer "sender_id"
-    t.integer "recipient_id"
-    t.string "token"
+    t.string "status", default: "No Response"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
-    t.string "location"
-    t.string "status"
     t.integer "capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -58,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_01_22_114426) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.integer "booking_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

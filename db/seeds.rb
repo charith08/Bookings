@@ -13,23 +13,25 @@ User.create!(name:  "Charith",
              activated: true,
              activated_at: Time.zone.now)
 
-   User.create!(name:  "Charith",
-                          email: "charith@commutatus.com",
-                          password:              "foobar",
-                          password_confirmation: "foobar",
-                          activated: true,
-                          activated_at: Time.zone.now)
-
-    User.create!(name:  "Charith3",
-                                       email: "charith1@commutatus.com",
+             User.create!(name:  "Charith",
+                                       email: "charith@commutatus.com",
                                        password:              "foobar",
                                        password_confirmation: "foobar",
                                        activated: true,
                                        activated_at: Time.zone.now)
 
-    User.create!(name:  "Charith4",
-                                                                          email: "charith4@commutatus.com",
-                                                                          password:              "foobar",
-                                                                          password_confirmation: "foobar",
-                                                                          activated: true,
-                                                                          activated_at: Time.zone.now)
+                 User.create!(name:  "Charith3",
+                                                    email: "charith1@commutatus.com",
+                                                    password:              "foobar",
+                                                    password_confirmation: "foobar",
+                                                    activated: true,
+                                                    activated_at: Time.zone.now)
+
+                 User.create!(name:  "Charith4",
+                                                                                       email: "charith4@commutatus.com",
+                                                                                       password:              "foobar",
+                                                                                       password_confirmation: "foobar",
+                                                                                       activated: true,
+                                                                                       activated_at: Time.zone.now)
+
+                                                                                

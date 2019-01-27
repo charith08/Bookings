@@ -15,3 +15,14 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+<br>
+
+
+<% if is_admin? %>
+<% else %>
+<% if  (@user.pusers.count  === 0) %>
+<% else %>
+  <h4>Meetings you've been added to</h4>
+  <%= render @user.pusers %>
+<% end %>
+<% end %>

@@ -11,31 +11,17 @@
     </div>
   <% end %>
 
-  <% if logged_in? && is_admin? %>
-    <div class="form-group">
+  <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, class:"form-control" %>
+    <%= form.text_field :name %>
   </div>
 
-    <div class="form-group">
-    <%= form.label :location %>
-    <%= form.text_field :location,class:"form-control" %>
+  <div class="field">
+    <%= form.label :capacity %>
+    <%= form.number_field :capacity %>
   </div>
 
-    <div class="form-group">
-    <%= form.label :status %>
-    <%= form.select(:status, ['In Use', 'Not In Use'] ,{}, {class:"form-control"}) %>
+  <div class="actions">
+    <%= form.submit %>
   </div>
-
-  <div class="form-group">
-  <%= form.label :capacity %>
-  <%= form.text_field :capacity, class:"form-control" %>
-</div>
-
-    <div class="actions">
-    <%= form.submit class:"btn btn-primary form-control" %>
-  </div>
-  <% else %>
-          <%= flash.now[:danger] = "You don't have authority add/modify meeting room." %>
-  <% end %>
 <% end %>

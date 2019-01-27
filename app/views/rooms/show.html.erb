@@ -1,5 +1,4 @@
-<h1>Room Details</h1>
-<% provide(:title, "Room Details") %>
+<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
@@ -7,21 +6,15 @@
 </p>
 
 <p>
-  <strong>Location:</strong>
-  <%= @room.location %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @room.status %>
-</p>
-
-<p>
   <strong>Capacity:</strong>
-  <% puts @room.capacity %>
-  <% puts 'charith' %>
   <%= @room.capacity %>
 </p>
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+
+<%= render @room.bookings %>
+
+
+<% if is_admin? %>
+<% else %>
+<%= link_to 'Create a new Meeting', new_room_booking_path(@room) %>
+<% end %>

@@ -1,27 +1,10 @@
-<% provide(:title, "Meeting Details") %>
-
-<h1>Meeting Details</h1>
-<div>
+<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Room:</strong>
-  <%= get_room_name(@booking.room_id) %>
+  <strong>Booking</strong>
+  <%= @booking.id %>
 </p>
 
-<p>
-  <strong>Start:</strong>
-  <%=readable_time(@booking.start_time) %>
-</p>
 
-<p>
-  <strong>End:</strong>
-  <%=readable_time( @booking.end_time) %>
-</p>
-
-<p> Send invite link to <p>
-
-  
-
-
-<%= link_to 'Edit', edit_user_booking_path(@booking.user_id,@booking.id) %> |
-<%= link_to 'Back', user_bookings_path(@booking.user_id)%>
+  <strong> Users</strong>
+  <%= render User.all %>

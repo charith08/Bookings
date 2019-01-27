@@ -1,0 +1,10 @@
+
+<h1>Room
+  <%= @room.id %>
+</h1>
+
+<h1>Slot
+  <%= @slot.id %>
+</h1>
+
+<%= render User.where(slot_id: @slot.id) %>
