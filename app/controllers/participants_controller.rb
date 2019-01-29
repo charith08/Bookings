@@ -31,7 +31,6 @@ class ParticipantsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @user = User.find(params[:user_id])
     puts @user.email
-    @mailname = @user.email
     count = @booking.participantCount
     if @booking.participantCount<@room.capacity
       if @booking.participants.exists?(user_id: @user.id)
@@ -39,7 +38,7 @@ class ParticipantsController < ApplicationController
         redirect_back(fallback_location: root_path)
       else
         @booking.update_column(:participantCount, (count+1))
-        @participant = @booking.participants.create(:user_id => @user.id)
+        @participant = @booking.participants.create(:user_id => @user.id, :email => @user.email)
         @pusers= @user.pusers.create(:booking_id => params[:booking_id])
 
 

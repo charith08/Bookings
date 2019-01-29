@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_01_28_090728) do
 
   create_table "participants", force: :cascade do |t|
     t.integer "user_id"
+    t.string "email"
     t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -19,7 +19,7 @@ class UserMailer < ApplicationMailer
     @participant = participant
     mail(
       :subject => 'Invite to a Meeting',
-      :to  => @mailuser,
+      :to  => participant.email,
       :html_body => '<strong>Hello</strong> dear Postmark user.',
       :track_opens => 'true')
   end
