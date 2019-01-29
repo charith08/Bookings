@@ -15,6 +15,7 @@ class ParticipantsController < ApplicationController
   # GET /participants/new
 
     def new
+     @participant = Participant.new
     end
 
 
@@ -26,21 +27,29 @@ class ParticipantsController < ApplicationController
   # POST /participants.json
   def create
 
-    room = Room.find(params[:room_id])
-    booking = Booking.find(params[:booking_id])
-    user = User.find(params[:user_id])
-    count = booking.participantCount
-    if booking.participantCount<room.capacity
-      if booking.participants.exists?(user_id: user.id)
+    @room = Room.find(params[:room_id])
+    @booking = Booking.find(params[:booking_id])
+    @user = User.find(params[:user_id])
+    puts @user.email
+    @mailname = @user.email
+    count = @booking.participantCount
+    if @booking.participantCount<@room.capacity
+      if @booking.participants.exists?(user_id: @user.id)
         flash[:danger]= "User  is already Added"
         redirect_back(fallback_location: root_path)
       else
-        booking.update_column(:participantCount, (count+1))
-        @participants = booking.participants.create(:user_id => params[:user_id])
-        @pusers= user.pusers.create(:booking_id => params[:booking_id])
+        @booking.update_column(:participantCount, (count+1))
+        @participant = @booking.participants.create(:user_id => @user.id)
+        @pusers= @user.pusers.create(:booking_id => params[:booking_id])
 
-        flash[:success]= "User is been added"
-        redirect_back(fallback_location: root_path)
+
+            if @participant.save
+              UserMailer.accept_invitation(@participant).deliver_now
+              flash[:success]= "User is been added"
+              redirect_back(fallback_location: root_path)
+            else
+              flash[:danger] = "Something went wrong"
+            end
       end
     else
       flash[:danger]= "Maximum Capacity is reached"
@@ -48,6 +57,8 @@ class ParticipantsController < ApplicationController
     end
 
   end
+
+
 
 
   # PATCH/PUT /participants/1

@@ -15,6 +15,17 @@ class UserMailer < ApplicationMailer
       :track_opens => 'true')
   end
 
+  def accept_invitation(participant)
+    @participant = participant
+    mail(
+      :subject => 'Invite to a Meeting',
+      :to  => @mailuser,
+      :html_body => '<strong>Hello</strong> dear Postmark user.',
+      :track_opens => 'true')
+  end
+
+
+
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #

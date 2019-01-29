@@ -16,8 +16,10 @@
     <%= readable_time(booking.end_time) %>
     </p>
 
-    <%= link_to "Accept", response_yes_path(:booking_id => booking.id, :user_id => @user.id),  remote: true, class:""%>
-    <%= link_to "Decline", response_no_path(:booking_id => booking.id, :user_id => @user.id),  remote: true, class:""%>
+    <!--<%= link_to "Accept", edit_accept_invitation_path %> -->
+
+    <!--<%= link_to "Accept", response_yes_path(:booking_id => booking.id, :user_id => @user.id),  remote: true, class:""%>
+    <%= link_to "Decline", response_no_path(:booking_id => booking.id, :user_id => @user.id),  remote: true, class:""%> -->
 
 
 </div>

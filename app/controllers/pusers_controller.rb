@@ -38,7 +38,9 @@ def no
   participantno.update_column(:status, "Declined")
   puser.update_column(:status, "Declined")
   end
-  
+
+
+
 end
   # POST /pusers
   # POST /pusers.json
